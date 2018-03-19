@@ -33,6 +33,24 @@ const
     Category = db.Category,
     Text = db.Text;
 
+// config.oauth2:
+//'faceook': {
+        //     'icon': 'facebook',
+        //     'name': 'Sign in with Facebook',
+        //     'app_key': 'your-app-id',
+        //     'app_secret': 'your-app-secret',
+        // },
+//'qq': {
+        //     'icon': 'qq',
+        //     'name': 'Sign in with qq',
+        //     'app_key': 'your-app-id',
+        //     'app_secret': 'your-app-secret',
+        // },
+//将被转换为
+//[
+//{id:'facebook',icon:facebook,name:'sign in with facebook'},
+//{id:'qq',icon:qq,name:'sign in with qq'},
+//]
 let
     signins = _.reduce(config.oauth2, function (results, conf, oauthId) {
         results.push({
@@ -43,12 +61,16 @@ let
         return results;
     }, []);
 
+//config.oauth2被转换为对象数组存储到signins
+
+
+
 let
     searchTypes = [
         {
             label: 'All',
             value: ''
-        },
+        }, 
         {
             label: 'Article',
             value: 'article'
@@ -66,6 +88,9 @@ let
         r[t.value] = t.label;
         return r;
     }, {});
+
+//对象数组被转换为了js对象
+//{‘’：‘all’,'article':'Article','wiki':'Wike','discuss':‘Discuss’}
 
 let
     WRITE_VIEWS_BACK = 100,
