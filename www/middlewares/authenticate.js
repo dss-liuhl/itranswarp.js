@@ -2,6 +2,7 @@
 
 /**
  * koa middleware that try to authenticate user from cookie, header, etc.
+ * koa 中间件，用cookie，header等认证用户
  * 
  * Use ctx.state.__user__ to access user object.
  */
