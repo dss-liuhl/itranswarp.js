@@ -33,6 +33,7 @@ _.each(config.oauth2, (cfg, name) => {
         cfg.app_secret,
         redirect_uri
     );
+    //将provider.getAuthentication转换为promise函数，便于异步编程
     provider.getAuthentication = bluebird.promisify(provider.getAuthentication, { context: provider });
     oauth2_providers[name] = provider;
     logger.info(`Init OAuth2: ${name}, redirect_uri: ${provider.redirect_uri}`);
